@@ -5,8 +5,10 @@ import {
     Dialog,
     DialogContent,
     DialogTrigger,
+    DialogTitle
   } from "@/components/ui/dialog";
 import { cn } from '@/lib/utils';
+import {VisuallyHidden} from "@radix-ui/react-visually-hidden"; 
   
 interface MeetingModelProps{
     isOpen:boolean;
@@ -27,6 +29,9 @@ const MeetingModel = ({isOpen, onClose,title,className,children,handleClick, but
     <Dialog open={isOpen} onOpenChange={onClose}>
     <DialogTrigger asChild>Open</DialogTrigger>
     <DialogContent className="flex w-full max-w-[520px] flex-col gap-6 border-none bg-dark-1 px-6 py-9 text-white">
+      <VisuallyHidden>
+        <DialogTitle>{title}</DialogTitle>
+      </VisuallyHidden>
     <div className='flex flex-col gap-6'>
     {image && (
         <div className='flex justify-center'>

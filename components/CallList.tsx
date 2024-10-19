@@ -1,5 +1,6 @@
 //@ts-nocheck
 "use client"
+import { useUser } from '@clerk/nextjs';
 import { useGetCalls } from '@/hooks/useGetCalls'
 import { CallRecording } from '@stream-io/node-sdk';
 import { useRouter } from 'next/navigation';
@@ -9,9 +10,9 @@ import { Call } from '@stream-io/video-react-sdk';
 import Loader from './Loader';
 import { useToast } from "@/hooks/use-toast";
 
-
-const CallList = ({type}: {type:'ended'| 'upcoming'|'recordings'}) => {
+const CallList = ({type}: {type:'ended' | 'upcoming' | 'recordings'}) => {
   const {endedCalls, upcomingCalls, callRecordings, isLoading} = useGetCalls();
+  const {user,isLoaded}  = useUser();
   const router = useRouter();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
   const {toast} = useToast();
@@ -42,6 +43,16 @@ const CallList = ({type}: {type:'ended'| 'upcoming'|'recordings'}) => {
   }
 
 useEffect(()=>{
+  if(isLoaded && !user){
+    router.push('./sign-in');
+  }
+},[user,isLoaded,router]);
+
+if(!user){
+  return null;
+}
+
+useEffect(()=>{
 const fetchRecordings = async () =>{
   try{
 
@@ -56,8 +67,11 @@ const fetchRecordings = async () =>{
 }
 if(type === 'recordings') fetchRecordings();
 },[type, callRecordings])
+
+// const calls = type === 'upcoming' ? upcomingCalls : [];
 const calls =getCalls();
 const noCallsMessage = getNoCallsMessage();
+
 
 if(isLoading) return <Loader/>
   return (
@@ -80,6 +94,7 @@ if(isLoading) return <Loader/>
             buttonText={type === 'recordings' ? 'Play' : 'Start'}
             handleClick={type === 'recordings' ? () => router.push(`${meeting.url}`) : () => router.push(`/meeting/${meeting.id}`)} 
             link={type === 'recordings' ? meeting.url: `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
+           
             />
         ))):(
             <h1>{noCallsMessage}</h1>
