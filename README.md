@@ -1,4 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Screenshot (224)](https://github.com/user-attachments/assets/ae2ac9d0-3559-4e20-a5c8-cc1811b0c12f)
+
+![Screenshot (226)](https://github.com/user-attachments/assets/88c04cb9-f19a-468b-b682-29bb6bc18bdd)
+
+![Screenshot (228)](https://github.com/user-attachments/assets/a62c0fb3-351c-466c-a734-c103a05c9f5f)
+
+![Screenshot (230)](https://github.com/user-attachments/assets/3d56f2e0-7190-4533-a6d0-58e520b3fd83)
+
+![Screenshot (227)](https://github.com/user-attachments/assets/77a102ac-2cf1-4816-91b8-36d632613463)
+
 
 ## Getting Started
 
@@ -14,8 +24,6 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
@@ -29,8 +37,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
